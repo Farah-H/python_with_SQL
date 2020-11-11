@@ -23,17 +23,19 @@ class DB_connection:
         for record in view_new_table:
             print(record)
 
-    def add_info(self):
+    def add_info(self,table_name,column_name, data):
         cursor = self.establish_connection()
-        cursor.execute(f"INSERT INTO {table_name} ({column_name})")
+        cursor.execute(f"INSERT INTO {table_name} ({column_name}) VALUES ({data});")
 
 
 
-table_name = input("What would you like your table to be called?")
-column_name = input("Please enter the name of your first column, remembering to use SQL conventions.")
+table_name = input("What table are you editing? If you are creating a new table, what would youlike to call it?")
+column_name = input("Please enter the name of the column you are adding / changing.")
 # it would be cool to increment this to convert whatever they put into an appropriate format
 # e.g by replacing spaces with _ 
-char_type = 
-class_instance = DB_connection()
-class_instance.new_table("farahs_table", "customer_name", "VARCHAR(20)")
+data_type = input("What is the variable type for your column? If you're not sure type 'VARCHAR(155)'.")
+data = 'Please enter the information you want to add to your column.'
 
+class_instance = DB_connection()
+class_instance.new_table(table_name, column_name, data_type)
+class_instance.add_info(table_name,column_name,data)
