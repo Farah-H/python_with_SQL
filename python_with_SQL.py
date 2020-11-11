@@ -7,7 +7,7 @@ import pyodbc
 server = "databases1.spartaglobal.academy"
 database = "Northwind"
 username = "SA"
-password = "Passw0rd2018"
+password = ""
 connection = pyodbc.connect(
     f"DRIVER=ODBC Driver 17 for SQL Server;SERVER={server};DATABASE={database};UID={username};PWD={password}"
 )
@@ -41,6 +41,8 @@ product_rows = cursor.execute('SELECT * FROM Products')
 # iterating the data until the last line of the data (until condition is false)
 while True:
     records = product_rows.fetchone()
+    # when there is no records left it means the value is none
     if records is None:
+        # means stop 
         break 
     print(records.UnitPrice)
